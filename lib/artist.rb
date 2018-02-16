@@ -11,7 +11,9 @@ class Artist
   end
 
   def add_to_list
-    @@list.push(self)
+    if (self.name)
+      @@list.push(self)
+    end
   end
 
   def self.list
@@ -28,4 +30,7 @@ class Artist
     @@list.clear
   end
 
+  def self.sort_list
+    @@list.sort_by! {|artist| artist.name}
+  end
 end

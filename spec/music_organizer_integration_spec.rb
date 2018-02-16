@@ -17,6 +17,19 @@ describe('clear button removes artist inputs from field', {:type => :feature}) d
     visit('/')
     fill_in('artist', :with => 'Radiohead')
     click_button('clear')
-    expect(page.has_content?('Radiohead')).to(eq(false)) 
+    expect(page.has_content?('Radiohead')).to(eq(false))
+  end
+end
+
+describe('album page', {:type => :feature}) do
+  it('adds albums to list') do
+    visit('/')
+    fill_in('artist', :with => 'Gaga')
+    click_button('Submit')
+    click_link('Gaga')
+    expect(page).to have_content('Artist: Gaga')
+    fill_in('album', :with => 'Joanne')
+    click_button('Submit')
+    expect(page).to have_content('Joanne')
   end
 end

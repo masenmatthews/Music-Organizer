@@ -18,6 +18,7 @@ post('/') do
   artist = params["artist"]
   artist_val = Artist.new({:name => artist})
   artist_val.add_to_list()
+  Artist.sort_list
   artist_list = Artist.list
   @artist_list = artist_list
   erb(:artist_input)
